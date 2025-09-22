@@ -1,0 +1,78 @@
+-- Create Database
+CREATE DATABASE HotelManagementSystem;
+USE HotelManagementSystem;
+-- Login Table
+CREATE TABLE Login (
+    login_id INT AUTO_INCREMENT PRIMARY KEY,
+    login_role VARCHAR(50) NOT NULL,
+    login_username VARCHAR(100) UNIQUE NOT NULL,
+    login_password VARCHAR(100) NOT NULL
+);
+
+-- User Table
+CREATE TABLE User (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(100) NOT NULL,
+    user_mobile VARCHAR(15) UNIQUE,
+    user_email VARCHAR(100) UNIQUE,
+    user_address VARCHAR(200),
+    login_id INT,
+    FOREIGN KEY (login_id) REFERENCES Login(login_id)
+);
+
+-- Employee Table
+CREATE TABLE Employee (
+    emp_id INT AUTO_INCREMENT PRIMARY KEY,
+    emp_name VARCHAR(100) NOT NULL,
+    emp_desc VARCHAR(200),
+    login_id INT,
+    FOREIGN KEY (login_id) REFERENCES Login(login_id)
+);
+
+--  Permission Table
+CREATE TABLE Permission (
+    per_id INT AUTO_INCREMENT PRIMARY KEY,
+    per_name VARCHAR(100) NOT NULL,
+    per_module VARCHAR(100),
+    emp_id INT,
+    FOREIGN KEY (emp_id) REFERENCES Employee(emp_id)
+);
+
+-- Customer Table
+CREATE TABLE Customer (
+    cus_id INT AUTO_INCREMENT PRIMARY KEY,
+    cus_name VARCHAR(100) NOT NULL,
+    cus_mobile VARCHAR(15) UNIQUE,
+    cus_email VARCHAR(100) UNIQUE,
+    cus_add VARCHAR(200)
+);
+
+-- Hotel Table
+CREATE TABLE Hotel (
+    hotel_id INT AUTO_INCREMENT PRIMARY KEY,
+    hotel_type VARCHAR(100) NOT NULL,
+    hotel_desc VARCHAR(200),
+    cus_id INT,
+    FOREIGN KEY (cus_id) REFERENCES Customer(cus_id)
+);
+
+-- Booking Table
+CREATE TABLE Booking (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_type VARCHAR(100) NOT NULL,
+    book_date DATE NOT NULL,
+    cus_id INT,
+    hotel_id INT,
+    FOREIGN KEY (cus_id) REFERENCES Customer(cus_id),
+    FOREIGN KEY (hotel_id) REFERENCES Hotel(hotel_id)
+);
+
+-- Payments Table
+CREATE TABLE Payments (
+    pay_id INT AUTO_INCREMENT PRIMARY KEY,
+    pay_type VARCHAR(50) NOT NULL, -- Card, Cash, UPI
+    pay_amt DECIMAL(10,2) NOT NULL,
+    pay_date DATE NOT NULL,
+    hotel_id INT,
+    FOREIGN KEY (hotel_id) REFERENCES Hotel(hotel_id)
+);
