@@ -23,3 +23,7 @@ The database consists of the following tables:
 * A room can be booked in multiple reservations over time.
 * Each reservation is associated with a single payment.
 * A guest can use multiple services, tracked via the GuestServices mapping table.
+
+# Screenshot 
+<img width="1125" height="661" alt="image" src="https://github.com/user-attachments/assets/202ee759-7535-4cea-bb89-c25ec23d32fb" />
+
