@@ -3,6 +3,9 @@
 Hotel Management Database 
 The chosen domain for this project is Hotel Management. This database is designed to efficiently manage hotel operations, including guest information, room allocation, reservations, payments, staff, and additional services such as laundry, spa, and food delivery. It aims to streamline day-to-day hotel management tasks and improve service tracking.
 
+# Software Used 
+postgres SQL 
+
 # ER diagram 
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/3da8f8ea-b952-4b06-baa4-0dec1c8a475e" />
 
